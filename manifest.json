@@ -1,0 +1,48 @@
+{
+    "$schema": "./manifest.schema.json",
+    "manifest_version": 1,
+    "supported_services": [
+        "tracker"
+    ],
+    "slug": "tracker-linked-task",
+    "version": "0.0.2",
+    "name": {
+        "ru": "Оформить связанную заявку",
+        "en": "Create Linked Tas"
+    },
+    "description": {
+        "ru": "Создание связанной задачи в Tracker с выбором проекта и автоматическим заполнением полей для проекта SUPTOS.",
+        "en": "Create linked Tracker issues with project selection and automatic field mapping."
+    },
+    "permissions": {
+        "data": [
+            "tracker:issues:read",
+            "tracker:issues:write",
+            "tracker:issuetypes:read",
+            "tracker:queues:read",
+            "tracker:fields:read",
+            "tracker:attachments:write"
+        ]
+    },
+    "support": [
+        {
+            "type": "email",
+            "value": "diana.koltsova@lamoda.ru"
+        }
+    ],
+    "slots": {
+        "tracker": {
+            "issue.action": [
+                {
+                    "entrypoint": "index.html",
+                    "title": {
+                        "ru": "Оформить связанную заявку",
+                        "en": "Create Linked Tas"
+                    },
+                    "contextLevel": "full"
+                }
+            ]
+        }
+    },
+    "id": "8b42c9ff-1a35-4267-a758-f9943ade20de"
+}

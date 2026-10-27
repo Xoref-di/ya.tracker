@@ -1,0 +1,25 @@
+{
+  "issue.action": [
+    {
+      "slug": "tracker-linked-task",
+      "version": "0.0.2",
+      "permissions": {
+        "data": [
+          "tracker:issues:read",
+          "tracker:issues:write",
+          "tracker:issuetypes:read",
+          "tracker:queues:read",
+          "tracker:fields:read",
+          "tracker:attachments:write"
+        ]
+      },
+      "entrypoint": "index.html",
+      "title": {
+        "ru": "Оформить связанную заявку",
+        "en": "Create Linked Tas"
+      },
+      "contextLevel": "full",
+      "downloadUrl": "http://localhost:5173/plugins-debug"
+    }
+  ]
+}
