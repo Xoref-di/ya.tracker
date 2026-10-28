@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <filter id="logoShadow" x="-10%" y="-10%" width="125%" height="125%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- Background Base (1:1 Ratio) -->
+  <rect width="512" height="512" rx="123" fill="#212226" stroke="#32363E" stroke-width="4"/>
+
+  <!-- Logo Graphics -->
+  <g filter="url(#logoShadow)">
+    
+        <!-- Main Parent Ticket (Top-Left) -->
+        <rect x="110" y="120" width="170" height="150" rx="20" fill="#2C3038" stroke="#FFFFFF" stroke-width="10.5"/>
+        <line x1="145" y1="170" x2="235" y2="170" stroke="#FFFFFF" stroke-width="8.75" stroke-linecap="round" opacity="0.8"/>
+        <line x1="145" y1="210" x2="200" y2="210" stroke="#FFFFFF" stroke-width="8.75" stroke-linecap="round" opacity="0.6"/>
+
+        <!-- Connecting Dependency Path -->
+        <path d="M 195 270 C 195 330, 230 350, 280 350" fill="none" stroke="#FFCC00" stroke-width="10.5" stroke-linecap="round" stroke-dasharray="10 10"/>
+
+        <!-- Created Linked Child Ticket (Bottom-Right) -->
+        <rect x="235" y="245" width="170" height="150" rx="20" fill="#2A2E38" stroke="#FFCC00" stroke-width="11.25"/>
+        <line x1="270" y1="295" x2="350" y2="295" stroke="#FFCC00" stroke-width="8.75" stroke-linecap="round"/>
+
+        <!-- Prominent Plus Action Circle -->
+        <circle cx="355" cy="345" r="46" fill="#FFCC00" stroke="#212226" stroke-width="6"/>
+        <line x1="330" y1="345" x2="380" y2="345" stroke="#212226" stroke-width="9.5" stroke-linecap="round"/>
+        <line x1="355" y1="320" x2="355" y2="370" stroke="#212226" stroke-width="9.5" stroke-linecap="round"/>
+      
+  </g>
+</svg>

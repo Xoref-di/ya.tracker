@@ -1,0 +1,919 @@
+/* stylelint-disable declaration-no-important */
+
+// ============================================
+// БАЗОВЫЙ КАРКАС (не зависит от темы)
+// ============================================
+
+.theme-form {
+    margin-top: 0; /* Убрали отступ сверху, чтобы не было лишнего скролла */
+    padding: 16px; /* Комфортный отступ внутри */
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    max-width: 900px;
+    font-family: var(--theme-font);
+    color: var(--theme-text);
+    background: var(--theme-bg);
+    box-sizing: border-box;
+
+    // ---------- Баннер сверху ----------
+    .theme-banner {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 16px 22px;
+        margin-bottom: 16px;
+        border-radius: 18px;
+        background: var(--theme-banner-bg);
+        border: 2px solid var(--theme-banner-border);
+        color: var(--theme-banner-text);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        position: relative;
+        box-shadow: var(--theme-banner-shadow);
+
+        .theme-banner-emoji {
+            font-size: 18px;
+            display: inline-block;
+            transform-origin: bottom center;
+            animation: sway 4s ease-in-out infinite;
+        }
+
+        .theme-banner-right {
+            margin-left: auto;
+            font-size: 12px;
+            opacity: 0.9;
+        }
+    }
+
+    // ---------- Карточка ----------
+    .theme-card {
+        padding: 28px;
+        margin-top: 16px;
+        border-radius: 18px;
+        background: var(--theme-card-bg);
+        border: 2px solid var(--theme-card-border);
+        box-shadow: var(--theme-card-shadow);
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+        animation: warmBreath 8s ease-in-out infinite;
+    }
+
+    // ---------- Заголовок секции ----------
+    .theme-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 22px;
+        padding-bottom: 14px;
+        border-bottom: 2px dashed var(--theme-header-line);
+        position: relative;
+        z-index: 3;
+
+        .theme-header-emoji {
+            font-size: 18px;
+            filter: drop-shadow(0 0 6px var(--theme-accent-glow));
+        }
+
+        .theme-header-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--theme-text-bright);
+            letter-spacing: 0.08em;
+            text-shadow: var(--theme-header-glow);
+        }
+
+        .theme-header-badge {
+            margin-left: auto;
+            font-size: 10px;
+            color: var(--theme-badge-text);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            background: var(--theme-badge-bg);
+            padding: 4px 10px;
+            border-radius: 999px;
+            border: 1px solid var(--theme-badge-border);
+        }
+    }
+
+    // ---------- Метка поля ----------
+    .theme-label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 8px;
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--theme-label);
+        letter-spacing: 0.06em;
+        position: relative;
+        z-index: 3;
+
+        &::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background: var(--theme-label-mark);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--theme-label-mark);
+        }
+
+        .theme-required {
+            color: var(--theme-required);
+            margin-left: 4px;
+            font-size: 14px;
+        }
+    }
+
+    // ---------- Обёртка поля ----------
+    .theme-field {
+        width: 100%;
+        min-width: 0;
+        border-radius: 12px;
+        overflow: hidden;
+        background: var(--theme-field-bg);
+        border: 1.5px solid var(--theme-field-border);
+        box-shadow: var(--theme-field-shadow);
+        position: relative;
+        z-index: 3;
+    }
+
+    // ---------- Поле с компактной датой ----------
+    .theme-field-date {
+        display: inline-block;
+        width: auto;
+        min-width: 0;
+        max-width: 100%;
+
+        .g-date-picker,
+        .g-date-picker__control,
+        .g-date-picker .g-text-input,
+        .g-date-picker .g-text-input__control {
+            width: 180px !important;
+            max-width: 180px !important;
+            min-width: 180px !important;
+        }
+    }
+
+    // ---------- Обёртка для DWHLocationSelector ----------
+    .theme-field-dwh {
+        padding: 0;
+
+        .g-select,
+        .g-select-control,
+        .g-select-control__button,
+        .g-text-input,
+        .g-text-input__control {
+            background: transparent !important;
+            background-color: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+        }
+
+        a,
+        button {
+            background: transparent !important;
+        }
+    }
+
+    // ---------- Подсказка ----------
+    .theme-hint {
+        margin-top: 6px;
+        font-size: 11px;
+        color: var(--theme-hint);
+        font-style: italic;
+        position: relative;
+        z-index: 3;
+    }
+
+    // ---------- Сетка ----------
+    .theme-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 28px;
+        position: relative;
+        z-index: 3;
+    }
+
+    .theme-field-gap {
+        margin-top: 22px;
+    }
+
+    .theme-full-width {
+        margin-top: 28px;
+        position: relative;
+        z-index: 3;
+    }
+
+    // ---------- Декор ----------
+    .theme-decor {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 1;
+    }
+
+    .theme-decor-item {
+        position: absolute;
+        top: -5%;
+        opacity: 0.65;
+        filter: drop-shadow(0 0 6px var(--theme-accent-glow));
+        animation: leafFall var(--decor-duration, 15s) linear infinite;
+        animation-delay: var(--decor-delay, 0s);
+    }
+
+    // ---------- Градиентный фон карточки ----------
+    .theme-bg-glow {
+        position: absolute;
+        inset: -15%;
+        pointer-events: none;
+        z-index: 0;
+        background: var(--theme-bg-glow);
+        filter: blur(8px);
+    }
+
+    // ============================================
+    // ПОЛЯ GRAVITY UI
+    // ============================================
+    input,
+    textarea,
+    .g-text-input__control,
+    .g-text-area__control,
+    .g-select-control__button {
+        color: var(--theme-text-bright) !important;
+        background-color: var(--theme-field-bg) !important;
+        font-family: var(--theme-font) !important;
+        font-weight: 500 !important;
+        letter-spacing: 0.03em !important;
+        caret-color: var(--theme-accent) !important;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+        color: var(--theme-hint) !important;
+        opacity: 0.85 !important;
+        font-style: italic !important;
+    }
+
+    .g-text-input,
+    .g-text-area,
+    .g-select-control {
+        position: relative;
+        transition: transform 0.2s ease;
+    }
+
+    .g-text-input:focus-within,
+    .g-text-area:focus-within,
+    .g-select-control:focus-within {
+        box-shadow:
+            0 0 0 2px var(--theme-accent),
+            0 0 16px var(--theme-accent-glow),
+            0 0 32px var(--theme-accent-glow-soft) !important;
+        border-color: var(--theme-accent) !important;
+        animation: focusIn 0.35s ease-out;
+        background:
+            linear-gradient(180deg, var(--theme-accent-soft) 0%, transparent 70%),
+            var(--theme-field-bg) !important;
+    }
+
+    .g-select,
+    .g-select-control,
+    .g-select-control__button {
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+
+    .g-select-control__indicator,
+    .g-select-control__arrow,
+    .g-select-control__button svg {
+        color: var(--theme-accent) !important;
+        fill: var(--theme-accent) !important;
+        filter: drop-shadow(0 0 3px var(--theme-accent-glow));
+    }
+
+    .g-select-control:hover .g-select-control__button svg {
+        color: var(--theme-accent-hover) !important;
+        fill: var(--theme-accent-hover) !important;
+    }
+}
+
+// ============================================
+// ПОПАП СЕЛЕКТА (рендерится в body)
+// ============================================
+
+body .g-select-popup,
+body .g-popup,
+body .g-select-popup__content,
+body .g-popup__content {
+    background: var(--theme-card-bg, var(--g-color-base-background, #1a1b22)) !important;
+    border: 2px solid var(--theme-accent, var(--g-color-base-brand, #5b9cf6)) !important;
+    border-radius: 12px !important;
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.35),
+        0 0 24px var(--theme-accent-soft, #5b9cf622) !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    font-family: var(--theme-font, sans-serif) !important;
+    z-index: 10000 !important;
+    opacity: 1 !important;
+}
+
+body .g-select-popup .g-list,
+body .g-select-popup .g-select-list,
+body .g-popup .g-list {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 6px 0 !important;
+    font-family: var(--theme-font, sans-serif) !important;
+}
+
+body .g-select-popup .g-select-list__filter,
+body .g-select-popup .g-list__filter,
+body .g-select-popup [class*='filter'] {
+    background: transparent !important;
+    border-bottom: 1px solid var(--theme-field-border, var(--g-color-line-generic, #333644)) !important;
+    padding: 8px 10px !important;
+}
+
+body .g-select-popup .g-text-input,
+body .g-select-popup .g-text-input__control,
+body .g-select-popup input {
+    background: var(--theme-field-bg, var(--g-color-base-generic, #2b2e3a)) !important;
+    color: var(--theme-text-bright, var(--g-color-text-primary, #ffffff)) !important;
+    border: 1px solid var(--theme-field-border, var(--g-color-line-generic, #3f4354)) !important;
+    border-radius: 8px !important;
+    font-family: var(--theme-font, sans-serif) !important;
+    box-shadow: none !important;
+}
+
+body .g-select-popup input::placeholder {
+    color: var(--theme-hint, var(--g-color-text-secondary, #888888)) !important;
+    opacity: 0.85 !important;
+    font-style: italic !important;
+}
+
+body .g-select-popup .g-list__item,
+body .g-select-popup .g-select-list__item {
+    color: var(--theme-text, var(--g-color-text-primary, #e0e0e0)) !important;
+    background: transparent !important;
+    padding: 8px 14px !important;
+    font-size: 13px !important;
+}
+
+body .g-select-popup .g-list__item:hover,
+body .g-select-popup .g-select-list__item:hover {
+    background: var(--theme-accent-soft, #5b9cf622) !important;
+    color: var(--theme-text-bright, var(--g-color-text-primary, #ffffff)) !important;
+}
+
+body .g-select-popup .g-list__item_active,
+body .g-select-popup .g-select-list__item_active {
+    background: var(--theme-accent-soft, #5b9cf633) !important;
+    color: var(--theme-text-bright, var(--g-color-text-primary, #ffffff)) !important;
+}
+
+body .g-select-popup [aria-selected='true'],
+body .g-select-popup .g-list__item_selected {
+    background: var(--theme-accent, var(--g-color-base-brand, #5b9cf6)) !important;
+    color: var(--theme-field-bg, var(--g-color-base-background, #1a1b22)) !important;
+    font-weight: 600 !important;
+}
+
+// ============================================
+// КАЛЕНДАРЬ (DatePicker) — рендерится в body
+// ============================================
+
+body .g-calendar,
+body .g-calendar__body,
+body .g-popup__content .g-calendar {
+    background: var(--theme-card-bg, var(--g-color-base-background, #1a1b22)) !important;
+    color: var(--theme-text, var(--g-color-text-primary, #e0e0e0)) !important;
+    border: 1px solid var(--theme-accent, var(--g-color-base-brand, #5b9cf6)) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
+    font-family: var(--theme-font, sans-serif) !important;
+}
+
+body .g-calendar__navigation,
+body .g-calendar__navigation-title {
+    color: var(--theme-text-bright, var(--g-color-text-primary, #ffffff)) !important;
+    background: transparent !important;
+}
+
+body .g-calendar__navigation button,
+body .g-calendar__navigation svg {
+    color: var(--theme-accent, var(--g-color-base-brand, #5b9cf6)) !important;
+    fill: var(--theme-accent, var(--g-color-base-brand, #5b9cf6)) !important;
+}
+
+body .g-calendar__weekdays,
+body .g-calendar__weekdays-item {
+    color: var(--theme-hint, var(--g-color-text-secondary, #888888)) !important;
+    background: transparent !important;
+}
+
+body .g-calendar__day,
+body .g-calendar__day-name {
+    color: var(--theme-text, var(--g-color-text-primary, #e0e0e0)) !important;
+    background: transparent !important;
+    border-radius: 8px !important;
+}
+
+body .g-calendar__day:hover {
+    background: var(--theme-field-bg, var(--g-color-base-generic, #2b2e3a)) !important;
+}
+
+body .g-calendar__day_selected,
+body .g-calendar__day_active {
+    background: var(--theme-accent, var(--g-color-base-brand, #5b9cf6)) !important;
+    color: var(--g-color-base-background, #1a1b22) !important;
+    font-weight: 600 !important;
+}
+
+body .g-calendar__day_today {
+    border: 1px solid var(--theme-accent, var(--g-color-base-brand, #5b9cf6)) !important;
+    border-radius: 8px !important;
+}
+
+body .g-calendar__day_disabled {
+    color: var(--theme-hint, var(--g-color-text-secondary, #888888)) !important;
+    opacity: 0.4 !important;
+}
+
+// ============================================
+// АНИМАЦИИ
+// ============================================
+
+@keyframes leafFall {
+    0% {
+        transform: translate3d(0, -10%, 0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.7;
+    }
+    90% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translate3d(-50px, 110%, 0) rotate(400deg);
+        opacity: 0;
+    }
+}
+
+@keyframes sway {
+    0%,
+    100% {
+        transform: rotate(-3deg);
+    }
+    50% {
+        transform: rotate(3deg);
+    }
+}
+
+@keyframes warmBreath {
+    0%,
+    100% {
+        box-shadow: var(--theme-card-shadow);
+    }
+    50% {
+        box-shadow: var(--theme-card-shadow-hover);
+    }
+}
+
+@keyframes focusIn {
+    from {
+        opacity: 0.6;
+        transform: scale(0.99);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .theme-form * {
+        animation: none !important;
+    }
+}
+
+// ============================================
+// ТЕМЫ
+// ============================================
+
+.theme-form[data-theme='classic'],
+body[data-theme='classic'] {
+    // Делаем форму и карточку одного тёмно-синего оттенка
+    --theme-bg: #1e202b; /* Тёмно-синий, как ночное небо */
+    --theme-card-bg: #252734; /* Карточка чуть светлее */
+    --theme-card-border: #35384a;
+
+    // Поля делаем еще светлее для контраста
+    --theme-field-bg: #2d3040;
+    --theme-field-border: #44485e;
+
+    // Текст
+    --theme-text: #e0e0e0;
+    --theme-text-bright: #ffffff;
+    --theme-hint: #888888;
+
+    // Акцент (синий)
+    --theme-accent: #5b9cf6;
+    --theme-accent-hover: #7fb2f9;
+    --theme-accent-soft: #5b9cf622;
+    --theme-accent-glow: #5b9cf644;
+    --theme-accent-glow-soft: #5b9cf622;
+
+    --theme-label: #ffffff;
+    --theme-label-mark: #5b9cf6;
+    --theme-required: #ff5555;
+
+    // Остальное
+    --theme-header-line: #35384a;
+    --theme-header-glow: none;
+    --theme-badge-bg: #2d3040;
+    --theme-badge-border: #44485e;
+    --theme-badge-text: #aaaaaa;
+
+    // Баннер (верхняя плашка)
+    --theme-banner-bg: #252734;
+    --theme-banner-border: #35384a;
+    --theme-banner-text: #e0e0e0;
+    --theme-banner-shadow: none;
+
+    --theme-bg-glow: none;
+    --theme-font: -apple-system, blinkmacsystemfont, 'Segoe UI', 'YS Text', sans-serif;
+}
+
+.theme-form[data-theme='classic'] {
+    .theme-decor {
+        display: none;
+    }
+    .theme-banner-emoji {
+        animation: none;
+    }
+    .theme-card {
+        animation: none;
+    }
+}
+
+// ---------- Осень ----------
+
+.theme-form[data-theme='autumn'],
+body[data-theme='autumn'] {
+    --theme-bg: #2a1a18;
+    --theme-card-bg: linear-gradient(180deg, #3a2420 0%, #452a25 100%);
+    --theme-card-border: #6b3f33;
+    --theme-card-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 0 80px rgba(224, 120, 86, 0.05);
+    --theme-card-shadow-hover:
+        0 8px 40px rgba(0, 0, 0, 0.5), inset 0 0 90px rgba(224, 120, 86, 0.1);
+    --theme-field-bg: #1f1210;
+    --theme-field-border: #6b3f33;
+    --theme-field-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.5);
+
+    --theme-text: #f5e0d0;
+    --theme-text-bright: #fff0e0;
+    --theme-hint: #b89880;
+
+    --theme-accent: #f0a070;
+    --theme-accent-hover: #e8b860;
+    --theme-accent-soft: #f0a07022;
+    --theme-accent-glow: #e0785688;
+    --theme-accent-glow-soft: #c7585f33;
+
+    --theme-label: #f0a070;
+    --theme-label-mark: #c7585f;
+    --theme-required: #a84455;
+
+    --theme-header-line: #6b3f33;
+    --theme-header-glow: 0 0 10px #e0785666, 0 0 20px #c7585f33;
+    --theme-badge-bg: #e8b86022;
+    --theme-badge-border: #e8b86066;
+    --theme-badge-text: #e8b860;
+
+    --theme-banner-bg: linear-gradient(90deg, #c7585f 0%, #e07856 100%);
+    --theme-banner-border: #f0a07088;
+    --theme-banner-text: #fff0e0;
+    --theme-banner-shadow: 0 8px 28px #c7585f44, inset 0 0 24px #e8b86022;
+
+    --theme-bg-glow:
+        radial-gradient(ellipse 50% 40% at 15% 20%, #e0785622 0%, transparent 65%),
+        radial-gradient(ellipse 45% 35% at 85% 70%, #c7585f22 0%, transparent 65%),
+        radial-gradient(ellipse 40% 30% at 50% 95%, #e8b86014 0%, transparent 70%);
+
+    --theme-font: 'Comfortaa', 'Nunito', 'Segoe UI', sans-serif;
+}
+
+// ---------- Зима ----------
+
+.theme-form[data-theme='winter'],
+body[data-theme='winter'] {
+    --theme-bg: #0b1220;
+    --theme-card-bg: linear-gradient(180deg, #131e33 0%, #1a2847 100%);
+    --theme-card-border: #3b5a8c;
+    --theme-card-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 0 80px rgba(120, 180, 255, 0.05);
+    --theme-card-shadow-hover:
+        0 8px 40px rgba(0, 0, 0, 0.5), inset 0 0 90px rgba(120, 180, 255, 0.1);
+    --theme-field-bg: #0a1526;
+    --theme-field-border: #3b5a8c;
+    --theme-field-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.5);
+
+    --theme-text: #dce8f5;
+    --theme-text-bright: #f0f7ff;
+    --theme-hint: #8fa9c9;
+
+    --theme-accent: #7fb8ff;
+    --theme-accent-hover: #a8d0ff;
+    --theme-accent-soft: #7fb8ff22;
+    --theme-accent-glow: #7fb8ff88;
+    --theme-accent-glow-soft: #a8d0ff33;
+
+    --theme-label: #7fb8ff;
+    --theme-label-mark: #a8d0ff;
+    --theme-required: #ff6b7a;
+
+    --theme-header-line: #3b5a8c;
+    --theme-header-glow: 0 0 10px #7fb8ff66, 0 0 20px #7fb8ff33;
+    --theme-badge-bg: #7fb8ff22;
+    --theme-badge-border: #7fb8ff66;
+    --theme-badge-text: #7fb8ff;
+
+    --theme-banner-bg: linear-gradient(90deg, #3b5a8c 0%, #7fb8ff 100%);
+    --theme-banner-border: #a8d0ff88;
+    --theme-banner-text: #f0f7ff;
+    --theme-banner-shadow: 0 8px 28px #7fb8ff44;
+
+    --theme-bg-glow:
+        radial-gradient(ellipse 50% 40% at 15% 20%, #7fb8ff22 0%, transparent 65%),
+        radial-gradient(ellipse 45% 35% at 85% 70%, #a8d0ff22 0%, transparent 65%);
+
+    --theme-font: 'Comfortaa', 'Nunito', 'Segoe UI', sans-serif;
+}
+
+// ---------- Весна ----------
+
+.theme-form[data-theme='spring'],
+body[data-theme='spring'] {
+    --theme-bg: #1a1218;
+    --theme-card-bg: linear-gradient(180deg, #2e1f28 0%, #3d2a35 100%);
+    --theme-card-border: #8c5a78;
+    --theme-card-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 0 80px rgba(255, 150, 200, 0.05);
+    --theme-card-shadow-hover:
+        0 8px 40px rgba(0, 0, 0, 0.5), inset 0 0 90px rgba(255, 150, 200, 0.1);
+    --theme-field-bg: #1a1018;
+    --theme-field-border: #8c5a78;
+    --theme-field-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.5);
+
+    --theme-text: #f5dce8;
+    --theme-text-bright: #ffeff7;
+    --theme-hint: #c99bb5;
+
+    --theme-accent: #ff9bc8;
+    --theme-accent-hover: #ffb8d6;
+    --theme-accent-soft: #ff9bc822;
+    --theme-accent-glow: #ff9bc888;
+    --theme-accent-glow-soft: #c7588c33;
+
+    --theme-label: #ff9bc8;
+    --theme-label-mark: #a8e060;
+    --theme-required: #ff6b9a;
+
+    --theme-header-line: #8c5a78;
+    --theme-header-glow: 0 0 10px #ff9bc866, 0 0 20px #a8e06033;
+    --theme-badge-bg: #a8e06022;
+    --theme-badge-border: #a8e06066;
+    --theme-badge-text: #a8e060;
+
+    --theme-banner-bg: linear-gradient(90deg, #ff9bc8 0%, #a8e060 100%);
+    --theme-banner-border: #ffb8d688;
+    --theme-banner-text: #ffeff7;
+    --theme-banner-shadow: 0 8px 28px #ff9bc844;
+
+    --theme-bg-glow:
+        radial-gradient(ellipse 50% 40% at 15% 20%, #ff9bc822 0%, transparent 65%),
+        radial-gradient(ellipse 45% 35% at 85% 70%, #a8e06022 0%, transparent 65%);
+
+    --theme-font: 'Comfortaa', 'Nunito', 'Segoe UI', sans-serif;
+}
+
+// ---------- Лето ----------
+
+.theme-form[data-theme='summer'],
+body[data-theme='summer'] {
+    --theme-bg: #102028;
+    --theme-card-bg: linear-gradient(180deg, #1e3a47 0%, #2a4e5e 100%);
+    --theme-card-border: #4a8ca8;
+    --theme-card-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 0 80px rgba(255, 200, 100, 0.05);
+    --theme-card-shadow-hover:
+        0 8px 40px rgba(0, 0, 0, 0.5), inset 0 0 90px rgba(255, 200, 100, 0.1);
+    --theme-field-bg: #0e1a22;
+    --theme-field-border: #4a8ca8;
+    --theme-field-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.5);
+
+    --theme-text: #dceff5;
+    --theme-text-bright: #f0fbff;
+    --theme-hint: #8fb8c9;
+
+    --theme-accent: #ffd066;
+    --theme-accent-hover: #ffe090;
+    --theme-accent-soft: #ffd06622;
+    --theme-accent-glow: #ffd06688;
+    --theme-accent-glow-soft: #4ac8ff33;
+
+    --theme-label: #ffd066;
+    --theme-label-mark: #4ac8ff;
+    --theme-required: #ff6b5a;
+
+    --theme-header-line: #4a8ca8;
+    --theme-header-glow: 0 0 10px #ffd06666, 0 0 20px #4ac8ff33;
+    --theme-badge-bg: #4ac8ff22;
+    --theme-badge-border: #4ac8ff66;
+    --theme-badge-text: #4ac8ff;
+
+    --theme-banner-bg: linear-gradient(90deg, #ffd066 0%, #4ac8ff 100%);
+    --theme-banner-border: #ffe09088;
+    --theme-banner-text: #102028;
+    --theme-banner-shadow: 0 8px 28px #ffd06644;
+
+    --theme-bg-glow:
+        radial-gradient(ellipse 50% 40% at 15% 20%, #ffd06622 0%, transparent 65%),
+        radial-gradient(ellipse 45% 35% at 85% 70%, #4ac8ff22 0%, transparent 65%);
+
+    --theme-font: 'Comfortaa', 'Nunito', 'Segoe UI', sans-serif;
+}
+
+// ---------- Киберпанк ----------
+
+.theme-form[data-theme='cyberpunk'],
+body[data-theme='cyberpunk'] {
+    --theme-bg: #05070e;
+    --theme-card-bg: linear-gradient(180deg, #0d1220 0%, #111830 100%);
+    --theme-card-border: #1e2a45;
+    --theme-card-shadow: 0 8px 32px rgba(0, 0, 0, 0.7), inset 0 0 80px rgba(94, 231, 255, 0.05);
+    --theme-card-shadow-hover:
+        0 8px 40px rgba(0, 0, 0, 0.7), inset 0 0 90px rgba(94, 231, 255, 0.1);
+    --theme-field-bg: #060a15;
+    --theme-field-border: #1e2a45;
+    --theme-field-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.7);
+
+    --theme-text: #e8f0ff;
+    --theme-text-bright: #ffc94a;
+    --theme-hint: #7c8daf;
+
+    --theme-accent: #ffb627;
+    --theme-accent-hover: #5ee7ff;
+    --theme-accent-soft: #ffb62722;
+    --theme-accent-glow: #ffb62788;
+    --theme-accent-glow-soft: #5ee7ff33;
+
+    --theme-label: #ffb627;
+    --theme-label-mark: #5ee7ff;
+    --theme-required: #ff3b3b;
+
+    --theme-header-line: #1e2a45;
+    --theme-header-glow: 0 0 10px #ffb62766, 0 0 20px #5ee7ff33;
+    --theme-badge-bg: #5ee7ff22;
+    --theme-badge-border: #5ee7ff66;
+    --theme-badge-text: #5ee7ff;
+
+    --theme-banner-bg: linear-gradient(90deg, #0d1220 0%, #060a15 100%);
+    --theme-banner-border: #ffb627;
+    --theme-banner-text: #ffc94a;
+    --theme-banner-shadow: 0 8px 28px #ffb62744, inset 0 0 24px #5ee7ff22;
+
+    --theme-bg-glow:
+        radial-gradient(ellipse 50% 40% at 15% 20%, #ffb62722 0%, transparent 65%),
+        radial-gradient(ellipse 45% 35% at 85% 70%, #5ee7ff22 0%, transparent 65%);
+
+    --theme-font: 'Orbitron', consolas, monospace;
+}
+
+// ---------- Наруто ----------
+
+.theme-form[data-theme='naruto'],
+body[data-theme='naruto'] {
+    --theme-bg: #0e0f14;
+    --theme-card-bg: linear-gradient(180deg, #1a1b24 0%, #232430 100%);
+    --theme-card-border: #4a3a2a;
+    --theme-card-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), inset 0 0 80px rgba(255, 120, 40, 0.06);
+    --theme-card-shadow-hover:
+        0 8px 40px rgba(0, 0, 0, 0.6), inset 0 0 90px rgba(255, 120, 40, 0.12);
+    --theme-field-bg: #101118;
+    --theme-field-border: #4a3a2a;
+    --theme-field-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+
+    --theme-text: #f5e5c8;
+    --theme-text-bright: #fff2d8;
+    --theme-hint: #b89a72;
+
+    --theme-accent: #ff8c2a;
+    --theme-accent-hover: #ffaa55;
+    --theme-accent-soft: #ff8c2a22;
+    --theme-accent-glow: #ff8c2a88;
+    --theme-accent-glow-soft: #ff8c2a33;
+
+    --theme-label: #ff8c2a;
+    --theme-label-mark: #4a90e2;
+    --theme-required: #e03a3a;
+
+    --theme-header-line: #4a3a2a;
+    --theme-header-glow: 0 0 10px #ff8c2a66, 0 0 20px #4a90e233;
+    --theme-badge-bg: #4a90e222;
+    --theme-badge-border: #4a90e266;
+    --theme-badge-text: #4a90e2;
+
+    --theme-banner-bg: linear-gradient(90deg, #e03a3a 0%, #ff8c2a 100%);
+    --theme-banner-border: #ffaa5588;
+    --theme-banner-text: #fff2d8;
+    --theme-banner-shadow: 0 8px 28px #ff8c2a44;
+
+    --theme-bg-glow:
+        radial-gradient(ellipse 50% 40% at 15% 20%, #ff8c2a22 0%, transparent 65%),
+        radial-gradient(ellipse 45% 35% at 85% 70%, #4a90e222 0%, transparent 65%);
+
+    --theme-font: 'Comfortaa', 'Nunito', 'Segoe UI', sans-serif;
+}
+
+// ============================================
+// Кнопка смены темы (ThemeSwitcher)
+// ============================================
+
+.theme-switcher-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 32px;
+    padding: 0 12px;
+    border-radius: 8px;
+    border: 1px solid var(--g-color-line-generic);
+    background: var(--g-color-base-generic);
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--g-color-text-primary);
+    font-family: inherit;
+    line-height: 1;
+    transition: background 0.15s ease;
+
+    &:hover {
+        background: var(--g-color-base-generic-hover);
+    }
+}
+
+.theme-switcher-arrow {
+    font-size: 10px;
+    opacity: 0.6;
+    transition: transform 0.2s ease;
+    display: inline-block;
+
+    &.is-open {
+        transform: rotate(180deg);
+    }
+}
+
+.theme-switcher-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 6px;
+    min-width: 160px;
+    background: var(--g-color-base-float);
+    border: 1px solid var(--g-color-line-generic);
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    padding: 6px;
+    z-index: 1000;
+}
+
+.theme-switcher-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 400;
+    text-align: left;
+    color: var(--g-color-text-primary);
+    font-family: inherit;
+    transition: background 0.1s ease;
+
+    &:hover {
+        background: var(--g-color-base-simple-hover);
+    }
+
+    &.is-active {
+        background: var(--g-color-base-selection);
+        font-weight: 600;
+    }
+}
